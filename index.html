@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#090d25"><title>Una pequeña pregunta</title>
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100svh;overflow:hidden;color:#fff;font-family:Georgia,serif;background:#090d25}
+.scene{position:relative;min-height:100svh;overflow:hidden;background:radial-gradient(ellipse at 50% 75%,#29345b,#151b3b 42%,#090d25 80%)}
+.stars,.hearts{position:absolute;inset:0;pointer-events:none}.star{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff7d9;box-shadow:0 0 8px 2px #fff8d966;animation:twinkle 3s infinite alternate}
+@keyframes twinkle{to{opacity:.2;transform:scale(.6)}}
+.moon{position:absolute;top:10%;right:12%;width:clamp(65px,18vw,110px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 32%,#fffce9,#ffe9b2 60%,#e6c98b);box-shadow:0 0 45px #ffe8ad66}
+.moon:after{content:"";position:absolute;inset:0;border-radius:50%;background:#101633;transform:translate(23%,-9%)}
+.hill{position:absolute;bottom:-5%;width:120%;height:24%;border-radius:50% 50% 0 0}.back{left:-15%;background:#182445;bottom:1%}.front{right:-28%;background:#101b35}
+.controls{position:absolute;z-index:5;top:16px;left:14px;right:14px;display:flex;justify-content:space-between;gap:8px}
+button{border:1px solid #ffffff40;background:#111936c9;color:#fff;border-radius:999px;padding:11px 14px;font:600 12px system-ui;backdrop-filter:blur(10px)}
+.header{position:absolute;top:9%;left:5%;right:5%;text-align:center;z-index:2}.eyebrow{font:600 10px system-ui;letter-spacing:.28em;text-transform:uppercase;color:#d7c8e8b8}
+h1{font-weight:400;font-size:clamp(28px,7vw,43px);margin:12px 0 8px}.subtitle{font:13px system-ui;color:#d9d8e9b8}
+.flower-wrap{position:absolute;left:50%;bottom:13%;width:min(80vw,360px);height:min(58vh,470px);transform:translateX(-50%);z-index:2}
+.flower{width:100%;height:100%;overflow:visible}.stem{fill:none;stroke:#5f9d76;stroke-width:8;stroke-linecap:round}.leaf{fill:#4e936b;stroke:#80bd88;stroke-width:1.5}
+.petal{fill:url(#petalGrad);stroke:#f7c6d8;stroke-width:1.5;filter:drop-shadow(0 3px 5px #090d2544)}
+.petal:nth-of-type(2n){fill:#ffe5e8}.petal-gone{animation:detach 1.15s cubic-bezier(.2,.7,.3,1) forwards}
+@keyframes detach{to{opacity:0;transform:translate(var(--dx),var(--dy)) rotate(var(--rot)) scale(.7)}}
+.center{fill:url(#centerGrad);stroke:#e7a94e;stroke-width:2}
+.message{position:absolute;left:0;right:0;bottom:108px;text-align:center;z-index:4;padding:0 18px}
+.phrase{min-height:31px;font-size:clamp(19px,5vw,25px);letter-spacing:.08em;color:#fff4d6;text-shadow:0 2px 15px #ffb7d577}
+.hint{font:11px system-ui;color:#d8d9e9b8;margin-top:7px}.floating-heart{position:absolute;color:#ffb7d5;text-shadow:0 0 16px #ff8fc4;animation:rise 4.5s ease-out forwards}
+@keyframes rise{0%{opacity:0;transform:translateY(0) scale(.5)}15%{opacity:.9}100%{opacity:0;transform:translateY(-230px) translateX(var(--drift)) scale(1.25)}}
+.spotify{position:absolute;z-index:6;left:50%;bottom:10px;transform:translateX(-50%);width:min(92%,360px);height:80px;border:0;border-radius:12px;overflow:hidden}.footer{display:none}
+@media(min-width:700px){.flower-wrap{bottom:9%;height:64vh}.header{top:8%}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important}}
+</style></head>
+<body><main class="scene">
+<div class="stars" id="stars"></div><div class="moon"></div><div class="hill back"></div><div class="hill front"></div>
+<div class="controls"><button id="reset">↻ Volver a empezar</button><a href="https://open.spotify.com/track/7DF8lvLdV3htIbuTWpc7lR" target="_blank" rel="noopener" style="text-decoration:none"><button type="button">♫ Abrir en Spotify</button></a></div>
+<header class="header"><div class="eyebrow">Bajo la misma luna</div><h1>Una pequeña pregunta</h1><div class="subtitle">A veces, hasta una flor guarda un secreto.</div></header>
+<div class="flower-wrap"><svg class="flower" viewBox="0 0 320 440" role="img" aria-label="Margarita bajo la luna">
+<defs><radialGradient id="petalGrad"><stop stop-color="#fff8f0"/><stop offset=".7" stop-color="#ffdce8"/><stop offset="1" stop-color="#f4abc9"/></radialGradient><radialGradient id="centerGrad"><stop stop-color="#ffe99b"/><stop offset="1" stop-color="#e9a83f"/></radialGradient></defs>
+<path class="stem" d="M160 215 C157 280 178 340 157 425"/><path class="leaf" d="M163 326 C115 286 80 302 105 330 C123 350 148 347 163 326Z"/><path class="leaf" d="M160 370 C205 333 244 347 218 373 C199 390 175 389 160 370Z"/>
+<g id="petals" transform="translate(160 205)">
+<ellipse class="petal" data-petal cx="0" cy="-62" rx="18" ry="48" transform="rotate(0)"/><ellipse class="petal" data-petal cx="0" cy="-62" rx="18" ry="48" transform="rotate(30)"/><ellipse class="petal" data-petal cx="0" cy="-62" rx="18" ry="48" transform="rotate(60)"/><ellipse class="petal" data-petal cx="0" cy="-62" rx="18" ry="48" transform="rotate(90)"/><ellipse class="petal" data-petal cx="0" cy="-62" rx="18" ry="48" transform="rotate(120)"/><ellipse class="petal" data-petal cx="0" cy="-62" rx="18" ry="48" transform="rotate(150)"/><ellipse class="petal" data-petal cx="0" cy="-62" rx="18" ry="48" transform="rotate(180)"/><ellipse class="petal" data-petal cx="0" cy="-62" rx="18" ry="48" transform="rotate(210)"/><ellipse class="petal" data-petal cx="0" cy="-62" rx="18" ry="48" transform="rotate(240)"/><ellipse class="petal" data-petal cx="0" cy="-62" rx="18" ry="48" transform="rotate(270)"/><ellipse class="petal" data-petal cx="0" cy="-62" rx="18" ry="48" transform="rotate(300)"/><ellipse class="petal" data-petal cx="0" cy="-62" rx="18" ry="48" transform="rotate(330)"/>
+<circle class="center" r="31"/><g fill="#b97831" opacity=".65"><circle cx="-10" cy="-7" r="2"/><circle cx="9" cy="-12" r="2"/><circle cx="13" cy="7" r="2"/><circle cx="-5" cy="12" r="2"/></g></g></svg></div>
+<section class="message" aria-live="polite"><div class="phrase" id="phrase">¿Me quiere… o no me quiere?</div><div class="hint" id="hint">Toca la flor para descubrirlo ✨</div><button id="pluck" style="margin-top:13px">Deshojar la margarita</button></section>
+<div class="hearts" id="hearts"></div><iframe class="spotify" src="https://open.spotify.com/embed/track/7DF8lvLdV3htIbuTWpc7lR?utm_source=generator&theme=0" title="Girl Of My Dreams — Juice WRLD, SUGA y BTS" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></main>
+<script>
+const stars=document.getElementById('stars');for(let i=0;i<85;i++){let s=document.createElement('i');s.className='star';s.style.left=Math.random()*100+'%';s.style.top=Math.random()*78+'%';s.style.animationDelay=Math.random()*4+'s';stars.appendChild(s)}
+const petals=[...document.querySelectorAll('[data-petal]')],phrase=document.getElementById('phrase'),hint=document.getElementById('hint'),pluck=document.getElementById('pluck');let remaining=[...petals],count=0,audio=null,timer=null,on=false,n=0;
+function heart(){let h=document.createElement('span');h.className='floating-heart';h.textContent='♥';h.style.left=(35+Math.random()*30)+'%';h.style.top=(55+Math.random()*20)+'%';h.style.fontSize=(15+Math.random()*18)+'px';h.style.setProperty('--drift',(Math.random()*100-50)+'px');document.getElementById('hearts').appendChild(h);setTimeout(()=>h.remove(),4600)}
+function pluckOne(){if(!remaining.length)return;let p=remaining.shift();p.style.setProperty('--dx',(Math.random()*220-110)+'px');p.style.setProperty('--dy',(120+Math.random()*150)+'px');p.style.setProperty('--rot',(Math.random()*260-130)+'deg');p.classList.add('petal-gone');count++;phrase.textContent=count%2?'LOVES ME':'LOVES ME NOT';hint.textContent=remaining.length?`Un pétalo menos… quedan ${remaining.length}.`:'La respuesta quedó escrita bajo las estrellas.';if(!remaining.length){pluck.textContent='Pedir un deseo ♥';for(let i=0;i<9;i++)setTimeout(heart,i*180)}}
+pluck.onclick=()=>{if(remaining.length)pluckOne();else for(let i=0;i<5;i++)setTimeout(heart,i*160)};
+document.getElementById('reset').onclick=()=>{remaining.forEach(p=>{p.classList.remove('petal-gone');p.style.removeProperty('--dx');p.style.removeProperty('--dy');p.style.removeProperty('--rot')});remaining=[...petals];count=0;phrase.textContent='¿Me quiere… o no me quiere?';hint.textContent='Toca la flor para descubrirlo ✨';pluck.textContent='Deshojar la margarita'};
+</script></body></html>
